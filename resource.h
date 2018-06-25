@@ -18,7 +18,11 @@
 #define IDC_DATETIMEPICKER1             1007
 #define IDC_DRIVER2                     1007
 #define IDC_IPADDRESS1                  1008
-#define IDC_RESULT                    1010
+#define IDC_FOLDER3                     1009
+#define IDC_RESULT                      1010
+#define IDC_DRIVER3                     1011
+#define IDC_BUTTON2                     1018
+#define IDC_BUTTON4                     1020
 
 // Next default values for new objects
 // 
@@ -26,7 +30,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        129
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1012
+#define _APS_NEXT_CONTROL_VALUE         1019
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

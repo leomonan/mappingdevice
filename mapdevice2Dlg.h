@@ -41,10 +41,11 @@ protected:
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
-	//afx_msg void OnChangeEdit11111();
 	afx_msg void OnMapDevice();
 	afx_msg void OnSendCommand();
     afx_msg void OnRunCommand(char * command, CEdit* pEdit_cmd,  CEdit* pEdit_ret );
+	afx_msg void OnClearCommand();
+	afx_msg void OnClearResult();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

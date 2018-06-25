@@ -17,74 +17,75 @@ static char THIS_FILE[] = __FILE__;
 class CAboutDlg : public CDialog
 {
 public:
-	CAboutDlg();
+    CAboutDlg();
 
 // Dialog Data
-	//{{AFX_DATA(CAboutDlg)
-	enum { IDD = IDD_ABOUTBOX };
-	//}}AFX_DATA
+    //{{AFX_DATA(CAboutDlg)
+    enum { IDD = IDD_ABOUTBOX };
+    //}}AFX_DATA
 
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CAboutDlg)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
+    // ClassWizard generated virtual function overrides
+    //{{AFX_VIRTUAL(CAboutDlg)
+    protected:
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    //}}AFX_VIRTUAL
 
 // Implementation
 protected:
-	//{{AFX_MSG(CAboutDlg)
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+    //{{AFX_MSG(CAboutDlg)
+    //}}AFX_MSG
+    DECLARE_MESSAGE_MAP()
 };
 
 CAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD)
 {
-	//{{AFX_DATA_INIT(CAboutDlg)
-	//}}AFX_DATA_INIT
+    //{{AFX_DATA_INIT(CAboutDlg)
+    //}}AFX_DATA_INIT
 }
 
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CAboutDlg)
-	//}}AFX_DATA_MAP
+    CDialog::DoDataExchange(pDX);
+    //{{AFX_DATA_MAP(CAboutDlg)
+    //}}AFX_DATA_MAP
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
-	//{{AFX_MSG_MAP(CAboutDlg)
-		// No message handlers
-	//}}AFX_MSG_MAP
+    //{{AFX_MSG_MAP(CAboutDlg)
+        // No message handlers
+    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // CMapdevice2Dlg dialog
 
 CMapdevice2Dlg::CMapdevice2Dlg(CWnd* pParent /*=NULL*/)
-	: CDialog(CMapdevice2Dlg::IDD, pParent)
+    : CDialog(CMapdevice2Dlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CMapdevice2Dlg)
-		// NOTE: the ClassWizard will add member initialization here
-	//}}AFX_DATA_INIT
-	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
-	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+    //{{AFX_DATA_INIT(CMapdevice2Dlg)
+        // NOTE: the ClassWizard will add member initialization here
+    //}}AFX_DATA_INIT
+    // Note that LoadIcon does not require a subsequent DestroyIcon in Win32
+    m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
 void CMapdevice2Dlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CMapdevice2Dlg)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
-	//}}AFX_DATA_MAP
+    CDialog::DoDataExchange(pDX);
+    //{{AFX_DATA_MAP(CMapdevice2Dlg)
+        // NOTE: the ClassWizard will add DDX and DDV calls here
+    //}}AFX_DATA_MAP
 }
 
 BEGIN_MESSAGE_MAP(CMapdevice2Dlg, CDialog)
-	//{{AFX_MSG_MAP(CMapdevice2Dlg)
-	ON_WM_SYSCOMMAND()
-	ON_WM_PAINT()
-	ON_WM_QUERYDRAGICON()
-	//ON_EN_CHANGE(IDC_USERNAME, OnChangeEdit11111)
-	ON_BN_CLICKED(IDC_BUTTON1, OnMapDevice)
-	ON_BN_CLICKED(IDOK, OnSendCommand)
+    //{{AFX_MSG_MAP(CMapdevice2Dlg)
+    ON_WM_SYSCOMMAND()
+    ON_WM_PAINT()
+    ON_WM_QUERYDRAGICON()
+    ON_BN_CLICKED(IDC_BUTTON1, OnMapDevice)
+    ON_BN_CLICKED(IDOK, OnSendCommand)
+	ON_BN_CLICKED(IDC_BUTTON4, OnClearCommand)
+	ON_BN_CLICKED(IDC_BUTTON2, OnClearResult)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -122,54 +123,56 @@ void CMapdevice2Dlg::SetIpFromClipBoard()
 
 BOOL CMapdevice2Dlg::OnInitDialog()
 {
-	CDialog::OnInitDialog();
+    CDialog::OnInitDialog();
 
-	// Add "About..." menu item to system menu.
+    // Add "About..." menu item to system menu.
 
-	// IDM_ABOUTBOX must be in the system command range.
-	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
-	ASSERT(IDM_ABOUTBOX < 0xF000);
+    // IDM_ABOUTBOX must be in the system command range.
+    ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
+    ASSERT(IDM_ABOUTBOX < 0xF000);
 
-	CMenu* pSysMenu = GetSystemMenu(FALSE);
-	if (pSysMenu != NULL)
-	{
-		CString strAboutMenu;
-		strAboutMenu.LoadString(IDS_ABOUTBOX);
-		if (!strAboutMenu.IsEmpty())
-		{
-			pSysMenu->AppendMenu(MF_SEPARATOR);
-			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
-		}
-	}
+    CMenu* pSysMenu = GetSystemMenu(FALSE);
+    if (pSysMenu != NULL)
+    {
+        CString strAboutMenu;
+        strAboutMenu.LoadString(IDS_ABOUTBOX);
+        if (!strAboutMenu.IsEmpty())
+        {
+            pSysMenu->AppendMenu(MF_SEPARATOR);
+            pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
+        }
+    }
 
-	// Set the icon for this dialog.  The framework does this automatically
-	//  when the application's main window is not a dialog
-	SetIcon(m_hIcon, TRUE);			// Set big icon
-	SetIcon(m_hIcon, FALSE);		// Set small icon
-	
-	// TODO: Add extra initialization here
-	SetIpFromClipBoard();
-	GetDlgItem(IDC_USERNAME)->SetWindowText(_T("qeexo")); 
-	GetDlgItem(IDC_PASSWD)->SetWindowText(_T("123123mn")); 
-	GetDlgItem(IDC_FOLDER1)->SetWindowText(_T("\\mnt")); 
-	GetDlgItem(IDC_DRIVER1)->SetWindowText(_T("x:")); 
-	GetDlgItem(IDC_FOLDER2)->SetWindowText(_T("\\share")); 
-	GetDlgItem(IDC_DRIVER2)->SetWindowText(_T("y:")); 
+    // Set the icon for this dialog.  The framework does this automatically
+    //  when the application's main window is not a dialog
+    SetIcon(m_hIcon, TRUE);         // Set big icon
+    SetIcon(m_hIcon, FALSE);        // Set small icon
+    
+    // TODO: Add extra initialization here
+    SetIpFromClipBoard();
+    GetDlgItem(IDC_USERNAME)->SetWindowText(_T("qeexo")); 
+    GetDlgItem(IDC_PASSWD)->SetWindowText(_T("123123mn")); 
+    GetDlgItem(IDC_FOLDER1)->SetWindowText(_T("\\mnt")); 
+    GetDlgItem(IDC_DRIVER1)->SetWindowText(_T("x:")); 
+    GetDlgItem(IDC_FOLDER2)->SetWindowText(_T("\\share")); 
+    GetDlgItem(IDC_DRIVER2)->SetWindowText(_T("y:")); 
+    GetDlgItem(IDC_FOLDER3)->SetWindowText(_T("\\android")); 
+    GetDlgItem(IDC_DRIVER3)->SetWindowText(_T("z:")); 
 
-	return TRUE;  // return TRUE  unless you set the focus to a control
+    return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
 void CMapdevice2Dlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
-	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
-	{
-		CAboutDlg dlgAbout;
-		dlgAbout.DoModal();
-	}
-	else
-	{
-		CDialog::OnSysCommand(nID, lParam);
-	}
+    if ((nID & 0xFFF0) == IDM_ABOUTBOX)
+    {
+        CAboutDlg dlgAbout;
+        dlgAbout.DoModal();
+    }
+    else
+    {
+        CDialog::OnSysCommand(nID, lParam);
+    }
 }
 
 // If you add a minimize button to your dialog, you will need the code below
@@ -178,34 +181,34 @@ void CMapdevice2Dlg::OnSysCommand(UINT nID, LPARAM lParam)
 
 void CMapdevice2Dlg::OnPaint() 
 {
-	if (IsIconic())
-	{
-		CPaintDC dc(this); // device context for painting
+    if (IsIconic())
+    {
+        CPaintDC dc(this); // device context for painting
 
-		SendMessage(WM_ICONERASEBKGND, (WPARAM) dc.GetSafeHdc(), 0);
+        SendMessage(WM_ICONERASEBKGND, (WPARAM) dc.GetSafeHdc(), 0);
 
-		// Center icon in client rectangle
-		int cxIcon = GetSystemMetrics(SM_CXICON);
-		int cyIcon = GetSystemMetrics(SM_CYICON);
-		CRect rect;
-		GetClientRect(&rect);
-		int x = (rect.Width() - cxIcon + 1) / 2;
-		int y = (rect.Height() - cyIcon + 1) / 2;
+        // Center icon in client rectangle
+        int cxIcon = GetSystemMetrics(SM_CXICON);
+        int cyIcon = GetSystemMetrics(SM_CYICON);
+        CRect rect;
+        GetClientRect(&rect);
+        int x = (rect.Width() - cxIcon + 1) / 2;
+        int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// Draw the icon
-		dc.DrawIcon(x, y, m_hIcon);
-	}
-	else
-	{
-		CDialog::OnPaint();
-	}
+        // Draw the icon
+        dc.DrawIcon(x, y, m_hIcon);
+    }
+    else
+    {
+        CDialog::OnPaint();
+    }
 }
 
 // The system calls this to obtain the cursor to display while the user drags
 //  the minimized window.
 HCURSOR CMapdevice2Dlg::OnQueryDragIcon()
 {
-	return (HCURSOR) m_hIcon;
+    return (HCURSOR) m_hIcon;
 }
 
 void CMapdevice2Dlg::OnRunCommand(char * command, CEdit* pEdit_cmd,  CEdit* pEdit_ret ) 
@@ -227,32 +230,36 @@ void CMapdevice2Dlg::OnRunCommand(char * command, CEdit* pEdit_cmd,  CEdit* pEdi
 
 void CMapdevice2Dlg::OnMapDevice() 
 {
-	// TODO: Add your control notification handler code here
-	#define STR_SIZE 80
-	TCHAR hostname[STR_SIZE];
-	TCHAR username[STR_SIZE];
-	TCHAR password[STR_SIZE];
-	TCHAR folder1[STR_SIZE];
-	TCHAR driver1[STR_SIZE];
-	TCHAR folder2[STR_SIZE];
-	TCHAR driver2[STR_SIZE];
-    TCHAR command[1024];	
+    // TODO: Add your control notification handler code here
+    #define STR_SIZE 80
+    TCHAR hostname[STR_SIZE];
+    TCHAR username[STR_SIZE];
+    TCHAR password[STR_SIZE];
+    TCHAR folder1[STR_SIZE];
+    TCHAR driver1[STR_SIZE];
+    TCHAR folder2[STR_SIZE];
+    TCHAR driver2[STR_SIZE];
+    TCHAR folder3[STR_SIZE];
+    TCHAR driver3[STR_SIZE];
+    TCHAR command[1024];    
 
-	int n_touches = 6;
-	 char buf[3] = { 0 };
+    int n_touches = 6;
+     char buf[3] = { 0 };
     sscanf(buf, "%i", &n_touches);
     
-	GetDlgItem(IDC_IPADDRESS1)->GetWindowText(hostname, STR_SIZE);
+    GetDlgItem(IDC_IPADDRESS1)->GetWindowText(hostname, STR_SIZE);
     if(0 == strcmp(hostname, "0.0.0.0")) {
         SetIpFromClipBoard();
         GetDlgItem(IDC_IPADDRESS1)->GetWindowText(hostname, STR_SIZE);
     }
-	GetDlgItem(IDC_USERNAME)->GetWindowText(username, STR_SIZE);
+    GetDlgItem(IDC_USERNAME)->GetWindowText(username, STR_SIZE);
     GetDlgItem(IDC_PASSWD)->GetWindowText(password, STR_SIZE);
     GetDlgItem(IDC_FOLDER1)->GetWindowText(folder1, STR_SIZE);
     GetDlgItem(IDC_DRIVER1)->GetWindowText(driver1, STR_SIZE);
     GetDlgItem(IDC_FOLDER2)->GetWindowText(folder2, STR_SIZE);
     GetDlgItem(IDC_DRIVER2)->GetWindowText(driver2, STR_SIZE);
+    GetDlgItem(IDC_FOLDER3)->GetWindowText(folder3, STR_SIZE);
+    GetDlgItem(IDC_DRIVER3)->GetWindowText(driver3, STR_SIZE);
 
 
     CEdit* pEdit_cmd = ( CEdit*)GetDlgItem(IDC_COMMAND);  
@@ -263,7 +270,7 @@ void CMapdevice2Dlg::OnMapDevice()
     ASSERT(pEdit_ret && pEdit_ret->GetSafeHwnd());  
     pEdit_ret->SetSel(-1); 
 
-	sprintf(command, "net use %s /del /y ",driver1 );
+    sprintf(command, "net use %s /del /y ",driver1 );
     pEdit_cmd->ReplaceSel(command);  
     
     CString result = ExecuteCmd(command);
@@ -278,6 +285,9 @@ void CMapdevice2Dlg::OnMapDevice()
     sprintf(command, "net use %s /del /y ",driver2 );
     OnRunCommand(command, pEdit_cmd, pEdit_ret);
 
+    sprintf(command, "net use %s /del /y ",driver3 );
+    OnRunCommand(command, pEdit_cmd, pEdit_ret);
+
     sprintf(command, "Netsh interface set interface \"Local Area Connection\" disable" );
     OnRunCommand(command, pEdit_cmd, pEdit_ret);
 
@@ -287,7 +297,10 @@ void CMapdevice2Dlg::OnMapDevice()
     sprintf(command, "net use %s \\\\%s%s %s /user:%s", driver1, hostname, folder1, password,username );
     OnRunCommand(command, pEdit_cmd, pEdit_ret);    
 
-	sprintf(command, "net use %s \\\\%s%s %s /user:%s", driver2, hostname, folder2, password,username );
+    sprintf(command, "net use %s \\\\%s%s %s /user:%s", driver2, hostname, folder2, password,username );
+    OnRunCommand(command, pEdit_cmd, pEdit_ret); 
+
+    sprintf(command, "net use %s \\\\%s%s %s /user:%s", driver3, hostname, folder3, password,username );
     OnRunCommand(command, pEdit_cmd, pEdit_ret); 
 
     return;
@@ -297,7 +310,7 @@ CString CMapdevice2Dlg::ExecuteCmd(CString str)
 {  
     SECURITY_ATTRIBUTES sa;  
     HANDLE hRead,hWrite;  
-	CString output; 
+    CString output; 
     sa.nLength = sizeof(SECURITY_ATTRIBUTES);  
     sa.lpSecurityDescriptor = NULL;  
     sa.bInheritHandle = TRUE;  
@@ -346,7 +359,7 @@ TCHAR* CMapdevice2Dlg::StringToChar(CString& str)
 
 void CMapdevice2Dlg::OnSendCommand() 
 {
-    TCHAR command[1024];	
+    TCHAR command[1024];    
 
     GetDlgItem(IDC_COMMAND)->GetWindowText(command, STR_SIZE);
     
@@ -360,4 +373,15 @@ void CMapdevice2Dlg::OnSendCommand()
     pEdit_ret->ReplaceSel(result);  
    
     
+}
+
+void CMapdevice2Dlg::OnClearCommand() 
+{
+    GetDlgItem(IDC_COMMAND)->SetWindowText(_T(""));
+
+}
+
+void CMapdevice2Dlg::OnClearResult() 
+{
+    GetDlgItem(IDC_RESULT)->SetWindowText(_T(""));
 }
